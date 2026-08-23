@@ -123,7 +123,7 @@ export default function LoginPage() {
             value={code}
             onChange={(e) => setCode(e.target.value)}
             autoCapitalize="characters"
-            placeholder="例：AOZORA"
+            placeholder="例：NIRASAKI"
             className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 tracking-widest"
           />
           <button

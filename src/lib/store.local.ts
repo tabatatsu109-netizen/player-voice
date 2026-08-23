@@ -49,6 +49,7 @@ function uid(prefix: string): string {
 const PLAYER_NAMES = [
   "阿部 蓮",
   "石川 悠真",
+  "植松 孝弘",
   "大西 陽翔",
   "川口 湊",
   "佐藤 大和",
@@ -103,8 +104,8 @@ function seedDB(): DB {
   const rng = makeRng(20260401);
   const team: Team = {
     id: "team_demo",
-    name: "青空高校サッカー部",
-    join_code: "AOZORA",
+    name: "韮崎高校サッカー部",
+    join_code: "NIRASAKI",
   };
 
   const users: User[] = [

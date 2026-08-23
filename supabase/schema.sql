@@ -109,7 +109,7 @@ create policy anon_all on coach_responses  for all using (true) with check (true
 --  チーム名・コード・名前は実際のチームに合わせて書き換えてください。
 -- =====================================================================
 insert into teams (name, join_code)
-values ('青空高校サッカー部', 'AOZORA')
+values ('韮崎高校サッカー部', 'NIRASAKI')
 on conflict (join_code) do nothing;
 
 insert into users (team_id, name, role, position, grade)
@@ -124,7 +124,7 @@ from teams t,
     ('選手C',              'player', 'MF', 2),
     ('選手D',              'player', 'FW', 1)
   ) as v(name, role, position, grade)
-where t.join_code = 'AOZORA'
+where t.join_code = 'NIRASAKI'
   and not exists (
     select 1 from users u where u.team_id = t.id and u.name = v.name
   );

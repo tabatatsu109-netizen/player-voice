@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  background: #f1f5f9;
+  color: #0f172a;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    "Hiragino Kaku Gothic ProN",
+    "Noto Sans JP",
+    "Yu Gothic",
+    Meiryo,
+    sans-serif;
+}
+
+/* スマホでタップしたときの青いハイライトを消す */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 入力の自動ズーム防止（iOS は 16px 未満でズームする） */
+input,
+select,
+textarea {
+  font-size: 16px;
+}

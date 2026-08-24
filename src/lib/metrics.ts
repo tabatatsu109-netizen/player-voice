@@ -55,7 +55,7 @@ export const METRICS: MetricDef[] = [
   },
   {
     key: "fatigue",
-    label: "つかれ具合",
+    label: "疲労度",
     playerQuestion: "今日のつかれ具合は？",
     coachQuestion: "選手はどれくらいつかれていると思う？",
     low: "つかれていない",
@@ -71,7 +71,7 @@ export const METRICS: MetricDef[] = [
   },
   {
     key: "intensity",
-    label: "練習のきつさ",
+    label: "強度",
     playerQuestion: "今日の練習はきつかった？",
     coachQuestion: "今日の練習はどれくらいのきつさにした？",
     low: "とても軽い",
@@ -87,7 +87,7 @@ export const METRICS: MetricDef[] = [
   },
   {
     key: "effort",
-    label: "がんばり具合",
+    label: "参加度",
     playerQuestion: "自分はしっかり取り組めた？",
     coachQuestion: "選手はしっかり取り組んでいたと思う？",
     low: "できなかった",
@@ -104,7 +104,7 @@ export const METRICS: MetricDef[] = [
   },
   {
     key: "purpose_understanding",
-    label: "目的が伝わったか",
+    label: "目標理解",
     playerQuestion: "今日の練習の目的はわかった？",
     coachQuestion: "今日の練習の目的は選手に伝わったと思う？",
     low: "わからない",
@@ -121,7 +121,7 @@ export const METRICS: MetricDef[] = [
   },
   {
     key: "tactical_understanding",
-    label: "戦術のわかりやすさ",
+    label: "戦術理解",
     playerQuestion: "今日の戦術はどれくらいわかっている？",
     coachQuestion: "選手は戦術をどれくらいわかっていると思う？",
     low: "ほとんどわからない",
@@ -138,7 +138,7 @@ export const METRICS: MetricDef[] = [
   },
   {
     key: "team_mood",
-    label: "チームの雰囲気",
+    label: "チーム士気",
     playerQuestion: "今日のチームの雰囲気は？",
     coachQuestion: "今日のチームの雰囲気はどうだった？",
     low: "とても重い",

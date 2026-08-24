@@ -7,6 +7,7 @@ import type {
   SessionType,
   Team,
   User,
+  WeeklyPlan,
 } from "./types";
 
 const KEY = "player-voice-db-v3";
@@ -17,6 +18,7 @@ interface DB {
   sessions: Session[];
   playerResponses: PlayerResponse[];
   coachResponses: CoachResponse[];
+  weeklyPlans: WeeklyPlan[];
 }
 
 /* ------------------------------------------------------------------ */
@@ -227,6 +229,7 @@ const EMPTY: DB = {
   sessions: [],
   playerResponses: [],
   coachResponses: [],
+  weeklyPlans: [],
 };
 
 function read(): DB {
@@ -367,6 +370,31 @@ export function createLocalStore(): DataStore {
       if (idx >= 0) db.coachResponses[idx] = row;
       else db.coachResponses.push(row);
       write(db);
+    },
+
+    async saveWeeklyPlan(teamId, plan) {
+      const db = read();
+      const idx = db.weeklyPlans.findIndex(
+        (p) => p.team_id === teamId && p.week_start === plan.week_start,
+      );
+      if (idx >= 0) db.weeklyPlans[idx] = plan;
+      else db.weeklyPlans.push(plan);
+      write(db);
+    },
+
+    async getWeeklyPlan(teamId, weekStart) {
+      return (
+        read().weeklyPlans.find(
+          (p) => p.team_id === teamId && p.week_start === weekStart,
+        ) ?? null
+      );
+    },
+
+    async listWeeklyPlans(teamId, limit = 4) {
+      const plans = read().weeklyPlans
+        .filter((p) => p.team_id === teamId)
+        .sort((a, b) => b.week_start.localeCompare(a.week_start));
+      return plans.slice(0, limit);
     },
 
     async reseed() {

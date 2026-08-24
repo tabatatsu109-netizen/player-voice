@@ -7,6 +7,7 @@ import type {
   SessionType,
   Team,
   User,
+  WeeklyPlan,
 } from "./types";
 
 export interface RangeData {
@@ -64,6 +65,12 @@ export interface DataStore {
     coachId: string,
     answer: CoachAnswer
   ): Promise<void>;
+  saveWeeklyPlan(teamId: string, plan: WeeklyPlan): Promise<void>;
+  getWeeklyPlan(
+    teamId: string,
+    weekStart: string
+  ): Promise<WeeklyPlan | null>;
+  listWeeklyPlans(teamId: string, limit?: number): Promise<WeeklyPlan[]>;
   /** デモモードのみ：サンプルデータを作り直す */
   reseed?(): Promise<void>;
 }

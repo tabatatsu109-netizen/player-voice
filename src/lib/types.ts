@@ -83,3 +83,20 @@ export const FORMATIONS = [
   "5-3-2",
   "その他",
 ];
+
+export interface WeeklySessionPlan {
+  day: number; // 0=Mon, 1=Tue, ..., 6=Sun
+  session_type: SessionType;
+  planned_focus: string; // e.g. "フィジカル強化", "戦術理解", "調整"
+  notes?: string | null;
+}
+
+export interface WeeklyPlan {
+  id: string;
+  team_id: string;
+  week_start: string; // YYYY-MM-DD (Monday)
+  created_by: string; // Coach ID
+  sessions: WeeklySessionPlan[];
+  created_at: string;
+  updated_at: string;
+}

@@ -1,6 +1,6 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import type { CoachAnswer, DataStore, PlayerAnswer, RangeData } from "./store";
-import type { CoachResponse, PlayerResponse, Session, Team, User } from "./types";
+import type { CoachResponse, PlayerResponse, Session, Team, User, WeeklyPlan } from "./types";
 
 /**
  * Supabase 実装。テーブル定義は supabase/schema.sql と対応。
@@ -169,6 +169,38 @@ export function createSupabaseStore(url: string, anonKey: string): DataStore {
           { onConflict: "session_id,coach_id" },
         );
       if (error) throw new Error(error.message);
+    },
+
+    async saveWeeklyPlan(teamId, plan) {
+      const { error } = await sb
+        .from("weekly_plans")
+        .upsert(
+          { ...plan, team_id: teamId },
+          { onConflict: "team_id,week_start" },
+        );
+      if (error) throw new Error(error.message);
+    },
+
+    async getWeeklyPlan(teamId, weekStart) {
+      const { data, error } = await sb
+        .from("weekly_plans")
+        .select("*")
+        .eq("team_id", teamId)
+        .eq("week_start", weekStart)
+        .maybeSingle();
+      if (error) throw new Error(error.message);
+      return (data as WeeklyPlan) ?? null;
+    },
+
+    async listWeeklyPlans(teamId, limit = 4) {
+      return unwrap(
+        await sb
+          .from("weekly_plans")
+          .select("*")
+          .eq("team_id", teamId)
+          .order("week_start", { ascending: false })
+          .limit(limit),
+      ) as WeeklyPlan[];
     },
   };
 }

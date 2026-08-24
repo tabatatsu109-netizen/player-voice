@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import AppShell from "@/components/AppShell";
 import ScaleInput from "@/components/ScaleInput";
+import WeeklyPlanCard from "@/components/WeeklyPlanCard";
 import { loadAuth } from "@/lib/auth";
 import { jpLabel, today } from "@/lib/date";
 import { FORMATION_COMFORT, METRICS } from "@/lib/metrics";
@@ -12,6 +13,7 @@ import {
   type AuthState,
   type Session,
   type SessionType,
+  type WeeklyPlan,
 } from "@/lib/types";
 
 type Values = Record<string, number | null>;
@@ -31,6 +33,7 @@ export default function PlayerPage() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [alreadyAnswered, setAlreadyAnswered] = useState(false);
+  const [weeklyPlan, setWeeklyPlan] = useState<WeeklyPlan | null>(null);
 
   useEffect(() => setAuth(loadAuth()), []);
 
@@ -67,6 +70,30 @@ export default function PlayerPage() {
   useEffect(() => {
     loadExisting();
   }, [loadExisting]);
+
+  // Load weekly plan for next week
+  useEffect(() => {
+    const loadWeeklyPlan = async () => {
+      if (!auth) return;
+      try {
+        // Calculate next Monday
+        const t = new Date(today());
+        const day = t.getDay() || 7;
+        const diff = 1 - day; // Monday offset
+        t.setDate(t.getDate() + diff + 7); // Next week's Monday
+        const year = t.getFullYear();
+        const month = String(t.getMonth() + 1).padStart(2, "0");
+        const date = String(t.getDate()).padStart(2, "0");
+        const weekStart = `${year}-${month}-${date}`;
+
+        const plan = await store.getWeeklyPlan(auth.teamId, weekStart);
+        setWeeklyPlan(plan);
+      } catch {
+        // Silently fail - weekly plan is optional
+      }
+    };
+    loadWeeklyPlan();
+  }, [auth, store]);
 
   const answered = useMemo(
     () => KEYS.filter((k) => values[k] != null).length,
@@ -161,6 +188,8 @@ export default function PlayerPage() {
               </p>
             )}
           </div>
+
+          {weeklyPlan && <WeeklyPlanCard plan={weeklyPlan} />}
 
           <p className="mb-2 text-[11px] leading-relaxed text-slate-500">
             正解はありません。今の自分の感覚をそのまま選んでください。

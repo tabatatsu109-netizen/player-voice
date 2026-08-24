@@ -12,6 +12,7 @@ const COACH_TABS = [
   { href: "/compare", label: "日ごと", icon: "⚖️" },
   { href: "/players", label: "選手", icon: "👤" },
   { href: "/coach", label: "入力", icon: "✏️" },
+  { href: "/coach/schedule", label: "計画", icon: "📅" },
   { href: "/export", label: "データ", icon: "⬇️" },
 ];
 

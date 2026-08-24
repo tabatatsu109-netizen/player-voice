@@ -2,7 +2,7 @@
 
 import type { AuthState } from "./types";
 
-const KEY = "player-voice-auth-v1";
+const KEY = "player-voice-auth-v2";
 
 export function saveAuth(a: AuthState) {
   if (typeof window === "undefined") return;

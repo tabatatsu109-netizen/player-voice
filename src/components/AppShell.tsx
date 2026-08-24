@@ -63,15 +63,15 @@ export default function AppShell({
 
   return (
     <div className="min-h-dvh pb-20">
-      <header className="sticky top-0 z-20 bg-teal-700 text-white shadow">
+      <header className="sticky top-0 z-20 bg-primary-600 text-white shadow">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
           <div className="min-w-0">
-            <p className="text-[11px] leading-tight text-teal-100">Player Voice</p>
+            <p className="text-[11px] leading-tight text-primary-100">Player Voice</p>
             <h1 className="truncate text-base font-bold leading-tight">
               {title ?? "選手と指導者の見えている景色"}
             </h1>
             {subtitle && (
-              <p className="truncate text-[11px] text-teal-100">{subtitle}</p>
+              <p className="truncate text-[11px] text-primary-100">{subtitle}</p>
             )}
           </div>
           <button
@@ -79,7 +79,7 @@ export default function AppShell({
               clearAuth();
               router.replace("/");
             }}
-            className="shrink-0 rounded-full border border-teal-400/60 px-3 py-1.5 text-xs"
+            className="shrink-0 rounded-full border border-primary-400/60 px-3 py-1.5 text-xs hover:bg-primary-700"
           >
             {auth.name}
             <span className="ml-1 opacity-70">切替</span>
@@ -105,12 +105,21 @@ export default function AppShell({
               <Link
                 key={t.href}
                 href={t.href}
-                className={`flex flex-col items-center gap-0.5 py-2 text-[10px] ${
-                  active ? "text-teal-700 font-bold" : "text-slate-500"
+                className={`relative flex flex-col items-center gap-0.5 py-2.5 text-[10px] font-medium transition-colors ${
+                  active
+                    ? "text-primary-600"
+                    : "text-slate-400 hover:text-slate-600"
                 }`}
               >
-                <span className="text-lg leading-none">{t.icon}</span>
+                <span className={`text-lg leading-none transition-transform ${
+                  active ? "scale-110" : ""
+                }`}>
+                  {t.icon}
+                </span>
                 {t.label}
+                {active && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-600 rounded-t-full" />
+                )}
               </Link>
             );
           })}

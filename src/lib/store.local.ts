@@ -9,7 +9,7 @@ import type {
   User,
 } from "./types";
 
-const KEY = "player-voice-db-v2";
+const KEY = "player-voice-db-v3";
 
 interface DB {
   teams: Team[];

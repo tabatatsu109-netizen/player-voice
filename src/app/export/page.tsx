@@ -67,7 +67,7 @@ export default function ExportPage() {
             onClick={() => setRange(r)}
             className={`flex-1 rounded-xl py-2 text-sm font-bold ${
               range === r
-                ? "bg-teal-700 text-white"
+                ? "bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800"
                 : "border border-slate-300 bg-white text-slate-600"
             }`}
           >
@@ -102,7 +102,7 @@ export default function ExportPage() {
                     {f.desc}
                   </span>
                 </span>
-                <span className="shrink-0 rounded-lg bg-teal-700 px-3 py-2 text-xs font-bold text-white">
+                <span className="shrink-0 rounded-lg bg-primary-600 px-3 py-2 text-xs font-bold text-white">
                   CSV
                 </span>
               </button>
@@ -141,7 +141,7 @@ export default function ExportPage() {
                       </td>
                       <td
                         className={`px-2 py-2 text-right font-bold tabular-nums ${
-                          (r.improvement ?? 0) > 0 ? "text-teal-700" : "text-slate-500"
+                          (r.improvement ?? 0) > 0 ? "text-primary-600" : "text-slate-500"
                         }`}
                       >
                         {r.improvement === null

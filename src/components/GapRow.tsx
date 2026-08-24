@@ -111,7 +111,7 @@ export default function GapRow({ gap, defaultOpen = false }: Props) {
             {interpret(def, g)}
           </p>
           {tip && (
-            <p className="rounded-lg bg-teal-50 p-2 text-xs leading-relaxed text-teal-900">
+            <p className="rounded-lg bg-primary-50 p-2 text-xs leading-relaxed text-primary-900">
               <span className="font-bold">話すきっかけに　</span>
               {tip}
             </p>

@@ -85,7 +85,7 @@ function PlayersInner() {
             onClick={() => setRange(r)}
             className={`flex-1 rounded-xl py-2 text-sm font-bold ${
               range === r
-                ? "bg-teal-700 text-white"
+                ? "bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800"
                 : "border border-slate-300 bg-white text-slate-600"
             }`}
           >

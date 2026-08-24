@@ -103,17 +103,17 @@ export default function PlayerPage() {
   return (
     <AppShell title="今日のふりかえり" subtitle={jpLabel(date)}>
       {saved ? (
-        <div className="rounded-2xl border border-teal-200 bg-teal-50 p-5 text-center">
+        <div className="rounded-2xl border border-primary-200 bg-primary-50 p-5 text-center">
           <p className="text-3xl">✅</p>
-          <p className="mt-2 text-lg font-black text-teal-900">送信しました</p>
-          <p className="mt-2 text-xs leading-relaxed text-teal-800">
+          <p className="mt-2 text-lg font-black text-primary-900">送信しました</p>
+          <p className="mt-2 text-xs leading-relaxed text-primary-800">
             あなたの答えは、チームの平均としてまとめられます。
             <br />
             指導者の見え方とどうちがったかは、次のミーティングで一緒に見ます。
           </p>
           <button
             onClick={() => setSaved(false)}
-            className="mt-4 rounded-xl border border-teal-400 px-4 py-2 text-sm font-bold text-teal-800"
+            className="mt-4 rounded-xl border border-primary-300 px-4 py-2 text-sm font-bold text-primary-700 hover:bg-primary-50"
           >
             入力し直す
           </button>
@@ -233,7 +233,7 @@ export default function PlayerPage() {
             <button
               onClick={submit}
               disabled={!complete || busy}
-              className="w-full rounded-xl bg-teal-700 py-3.5 font-bold text-white disabled:bg-slate-300"
+              className="w-full rounded-xl bg-primary-600 py-3.5 font-bold text-white disabled:bg-slate-300 hover:bg-primary-700 active:bg-primary-800"
             >
               {complete
                 ? busy

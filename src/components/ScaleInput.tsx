@@ -39,7 +39,7 @@ export default function ScaleInput({
               onClick={() => onChange(n)}
               className={`aspect-square rounded-md text-xs font-bold transition ${
                 selected
-                  ? "bg-teal-600 text-white ring-2 ring-teal-300"
+                  ? "bg-primary-600 text-white ring-2 ring-primary-300"
                   : "bg-slate-100 text-slate-600 active:bg-slate-200"
               }`}
             >

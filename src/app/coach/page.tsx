@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import AppShell from "@/components/AppShell";
+import { ProgressCard } from "@/components/ProgressCard";
 import ScaleInput from "@/components/ScaleInput";
 import { loadAuth } from "@/lib/auth";
 import { jpLabel, today } from "@/lib/date";
@@ -120,22 +121,22 @@ export default function CoachInputPage() {
   return (
     <AppShell requireTeamData title="指導者の入力" subtitle={jpLabel(date)}>
       {saved ? (
-        <div className="rounded-2xl border border-teal-200 bg-teal-50 p-5 text-center">
+        <div className="rounded-2xl border border-primary-200 bg-primary-50 p-5 text-center">
           <p className="text-3xl">✅</p>
-          <p className="mt-2 text-lg font-black text-teal-900">保存しました</p>
-          <p className="mt-2 text-xs text-teal-800">
+          <p className="mt-2 text-lg font-black text-primary-900">保存しました</p>
+          <p className="mt-2 text-xs text-primary-800">
             選手の答えと並べて、この日のちがいを見られます。
           </p>
           <div className="mt-4 flex flex-col gap-2">
             <Link
               href={`/compare?date=${date}`}
-              className="rounded-xl bg-teal-700 py-3 text-sm font-bold text-white"
+              className="rounded-xl bg-primary-600 py-3 text-sm font-bold text-white hover:bg-primary-700 active:bg-primary-800"
             >
               この日のちがいを見る
             </Link>
             <button
               onClick={() => setSaved(false)}
-              className="rounded-xl border border-teal-400 py-2.5 text-sm font-bold text-teal-800"
+              className="rounded-xl border border-primary-300 py-2.5 text-sm font-bold text-primary-700 hover:bg-primary-50"
             >
               入力し直す
             </button>
@@ -143,6 +144,12 @@ export default function CoachInputPage() {
         </div>
       ) : (
         <>
+          <ProgressCard
+            questionsCompleted={complete}
+            sessionInfoCompleted={complete}
+            onViewDashboard={() => window.location.href = "/dashboard"}
+          />
+
           <div className="mb-3 rounded-xl bg-white p-3">
             <div className="grid grid-cols-2 gap-2">
               <label className="block">
@@ -202,7 +209,7 @@ export default function CoachInputPage() {
             </p>
           </div>
 
-          <p className="mb-2 rounded-xl bg-violet-50 p-3 text-[11px] leading-relaxed text-violet-900">
+          <p className="mb-2 rounded-xl bg-primary-50 p-3 text-[11px] leading-relaxed text-primary-900">
             大事なのは、正しく点をつけることではありません。
             <strong>選手がどう感じたと思うかを、先に自分の言葉にしておくこと</strong>です。
             選手の答えを見る前に入力してください。
@@ -262,7 +269,7 @@ export default function CoachInputPage() {
             <button
               onClick={submit}
               disabled={!complete || busy}
-              className="w-full rounded-xl bg-teal-700 py-3.5 font-bold text-white disabled:bg-slate-300"
+              className="w-full rounded-xl bg-primary-600 py-3.5 font-bold text-white disabled:bg-slate-300 hover:bg-primary-700 active:bg-primary-800"
             >
               {complete
                 ? busy

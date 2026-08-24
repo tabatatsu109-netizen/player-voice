@@ -134,8 +134,8 @@ function PlayersInner() {
               <TrendChart
                 data={rows}
                 series={[
-                  { dataKey: "本人_体調", name: player.name, color: "#0284c7" },
-                  { dataKey: "チーム平均_体調", name: "チーム平均", color: "#94a3b8", dashed: true },
+                  { dataKey: "本人_体調", name: player.name, color: "#0066ff" },
+                  { dataKey: "チーム平均_体調", name: "チーム平均", color: "#9ca3af", dashed: true },
                 ]}
               />
             </div>
@@ -146,8 +146,8 @@ function PlayersInner() {
               <TrendChart
                 data={rows}
                 series={[
-                  { dataKey: "本人_疲労", name: player.name, color: "#e11d48" },
-                  { dataKey: "チーム平均_疲労", name: "チーム平均", color: "#94a3b8", dashed: true },
+                  { dataKey: "本人_疲労", name: player.name, color: "#ff8c42" },
+                  { dataKey: "チーム平均_疲労", name: "チーム平均", color: "#9ca3af", dashed: true },
                 ]}
               />
             </div>
@@ -158,8 +158,8 @@ function PlayersInner() {
               <TrendChart
                 data={rows}
                 series={[
-                  { dataKey: "本人_強度", name: player.name, color: "#0284c7" },
-                  { dataKey: "指導者_強度", name: "指導者", color: "#7c3aed", dashed: true },
+                  { dataKey: "本人_強度", name: player.name, color: "#0066ff" },
+                  { dataKey: "指導者_強度", name: "指導者", color: "#ff8c42", dashed: true },
                 ]}
               />
             </div>
@@ -170,8 +170,8 @@ function PlayersInner() {
               <TrendChart
                 data={rows}
                 series={[
-                  { dataKey: "本人_戦術理解", name: player.name, color: "#0284c7" },
-                  { dataKey: "指導者_戦術理解", name: "指導者", color: "#7c3aed", dashed: true },
+                  { dataKey: "本人_戦術理解", name: player.name, color: "#0066ff" },
+                  { dataKey: "指導者_戦術理解", name: "指導者", color: "#ff8c42", dashed: true },
                 ]}
               />
             </div>

@@ -16,10 +16,10 @@ import { round1 } from "@/lib/analysis";
 import { gapLevel } from "@/lib/metrics";
 
 const COLOR: Record<string, string> = {
-  aligned: "#94a3b8",
-  slight: "#fbbf24",
-  wide: "#f97316",
-  critical: "#ef4444",
+  aligned: "#10b981", /* --color-good */
+  slight: "#f59e0b", /* --color-warn */
+  wide: "#ff8c42", /* --color-accent-500 */
+  critical: "#dc2626", /* --color-danger */
 };
 
 interface Props {

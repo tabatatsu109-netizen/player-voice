@@ -94,13 +94,13 @@ export default function LoginPage() {
   return (
     <div className="mx-auto flex min-h-dvh max-w-md flex-col px-5 py-10">
       <div className="mb-8">
-        <p className="text-xs font-bold tracking-widest text-teal-700">PLAYER VOICE</p>
+        <p className="text-xs font-bold tracking-widest text-primary-700">PLAYER VOICE</p>
         <h1 className="mt-1 text-2xl font-black leading-snug text-slate-900">
           選手と指導者の
           <br />
           「見えている景色」をつなぐ
         </h1>
-        <p className="mt-3 rounded-xl bg-teal-50 p-3 text-xs leading-relaxed text-teal-900">
+        <p className="mt-3 rounded-xl bg-primary-50 p-3 text-xs leading-relaxed text-primary-900">
           このアプリは、どちらが正しいかを決めるものではありません。
           同じ練習を選手と指導者がそれぞれ評価し、
           <strong>見え方の違いを一緒に確認して話し合う</strong>ための道具です。
@@ -129,7 +129,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={busy || !code.trim()}
-            className="w-full rounded-xl bg-teal-700 py-3.5 font-bold text-white disabled:opacity-40"
+            className="w-full rounded-xl bg-primary-600 py-3.5 font-bold text-white disabled:opacity-40 hover:bg-primary-700 active:bg-primary-800"
           >
             次へ
           </button>
@@ -140,7 +140,7 @@ export default function LoginPage() {
                 setCode(hintCode);
                 submitCode(hintCode);
               }}
-              className="w-full rounded-xl border border-dashed border-teal-400 py-3 text-sm text-teal-700"
+              className="w-full rounded-xl border border-dashed border-primary-300 py-3 text-sm text-primary-700 hover:bg-primary-50"
             >
               サンプルのデータで試す（コード：{hintCode}）
             </button>

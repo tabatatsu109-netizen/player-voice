@@ -2,6 +2,42 @@
 
 :root {
   color-scheme: light;
+
+  /* Primary: 青系（サッカー・活動的） */
+  --color-primary-50: #f0f6ff;
+  --color-primary-100: #e0ecff;
+  --color-primary-200: #c7deff;
+  --color-primary-300: #a3c9ff;
+  --color-primary-400: #7ab0ff;
+  --color-primary-500: #0066ff;
+  --color-primary-600: #0052cc;
+  --color-primary-700: #0052cc;
+  --color-primary-800: #003ba3;
+  --color-primary-900: #002680;
+
+  /* Accent: オレンジ系（エネルギー・注意喚起） */
+  --color-accent-50: #fef5f0;
+  --color-accent-100: #fed8cc;
+  --color-accent-200: #fcb8a0;
+  --color-accent-300: #f99374;
+  --color-accent-400: #f76e48;
+  --color-accent-500: #ff8c42;
+  --color-accent-600: #ff6b1a;
+  --color-accent-700: #e55a00;
+  --color-accent-800: #c54100;
+  --color-accent-900: #952c00;
+
+  /* Status: 認識差判定 */
+  --color-good: #10b981;
+  --color-warn: #f59e0b;
+  --color-alert: #ef4444;
+  --color-danger: #dc2626;
+
+  /* Neutral: グレースケール */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f9fafb;
+  --color-text-primary: #1f2937;
+  --color-text-muted: #6b7280;
 }
 
 html,

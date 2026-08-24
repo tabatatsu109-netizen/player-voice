@@ -3,6 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import AppShell from "@/components/AppShell";
+import { GapInsightCard } from "@/components/GapInsightCard";
 import GapRow from "@/components/GapRow";
 import StatCard from "@/components/StatCard";
 import GapBarChart from "@/components/charts/GapBarChart";
@@ -95,16 +96,24 @@ function CompareInner() {
           )}
 
           {top3.length > 0 && (
-            <section className="mb-5">
-              <h2 className="mb-1 text-sm font-black text-slate-800">
-                この日、見え方がいちばんちがった3つ
-              </h2>
-              <div className="space-y-2">
-                {top3.map((g, i) => (
-                  <GapRow key={g.key} gap={g} defaultOpen={i === 0} />
+            <>
+              <section className="mb-5 space-y-2">
+                {top3.map((g) => (
+                  <GapInsightCard key={g.key} gap={g} />
                 ))}
-              </div>
-            </section>
+              </section>
+
+              <section className="mb-5">
+                <h2 className="mb-1 text-sm font-black text-slate-800">
+                  この日、見え方がいちばんちがった3つ（詳細）
+                </h2>
+                <div className="space-y-2">
+                  {top3.map((g, i) => (
+                    <GapRow key={g.key} gap={g} defaultOpen={i === 0} />
+                  ))}
+                </div>
+              </section>
+            </>
           )}
 
           <section className="mb-5 rounded-xl bg-white p-3">

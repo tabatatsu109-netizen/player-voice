@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import AppShell from "@/components/AppShell";
+import { GapInsightCard } from "@/components/GapInsightCard";
 import GapRow from "@/components/GapRow";
 import StatCard from "@/components/StatCard";
 import GapBarChart from "@/components/charts/GapBarChart";
@@ -91,7 +92,7 @@ export default function DashboardPage() {
             onClick={() => setRange(r)}
             className={`flex-1 rounded-xl py-2 text-sm font-bold ${
               range === r
-                ? "bg-teal-700 text-white"
+                ? "bg-primary-600 text-white"
                 : "border border-slate-300 bg-white text-slate-600"
             }`}
           >
@@ -101,11 +102,11 @@ export default function DashboardPage() {
       </div>
 
       {/* 初めて見る人でも読み方が分かるように、いちばん上に置く */}
-      <details className="mb-3 rounded-xl border border-teal-200 bg-teal-50 p-3">
-        <summary className="cursor-pointer text-xs font-bold text-teal-900">
+      <details className="mb-3 rounded-xl border border-primary-200 bg-primary-50 p-3">
+        <summary className="cursor-pointer text-xs font-bold text-primary-900">
           このページの見方（はじめての人へ）
         </summary>
-        <div className="mt-2 space-y-1.5 text-[11px] leading-relaxed text-teal-900">
+        <div className="mt-2 space-y-1.5 text-[11px] leading-relaxed text-primary-900">
           <p>
             <span className="rounded bg-sky-100 px-1 font-bold text-sky-800">青</span>
             が選手の平均、
@@ -143,7 +144,7 @@ export default function DashboardPage() {
             </h2>
             <Link
               href={`/compare?date=${latest.date}`}
-              className="text-xs font-bold text-teal-700"
+              className="text-xs font-bold text-primary-600 hover:text-primary-700"
             >
               この日をくわしく見る →
             </Link>
@@ -205,11 +206,18 @@ export default function DashboardPage() {
 この日はまだ指導者が入力していないので、くらべられません。
               </p>
             ) : (
-              <div className="space-y-2">
-                {latestTop3.map((g, i) => (
-                  <GapRow key={g.key} gap={g} defaultOpen={i === 0} />
-                ))}
-              </div>
+              <>
+                <div className="mb-4 space-y-2">
+                  {latestTop3.map((g) => (
+                    <GapInsightCard key={g.key} gap={g} />
+                  ))}
+                </div>
+                <div className="space-y-2">
+                  {latestTop3.map((g, i) => (
+                    <GapRow key={g.key} gap={g} defaultOpen={i === 0} />
+                  ))}
+                </div>
+              </>
             )}
           </section>
 
@@ -231,8 +239,8 @@ export default function DashboardPage() {
               <TrendChart
                 data={trend}
                 series={[
-                  { dataKey: "選手_疲労", name: "選手の平均", color: "#0284c7" },
-                  { dataKey: "指導者_疲労", name: "指導者の見方", color: "#7c3aed", dashed: true },
+                  { dataKey: "選手_疲労", name: "選手の平均", color: "#0066ff" },
+                  { dataKey: "指導者_疲労", name: "指導者の見方", color: "#ff8c42", dashed: true },
                 ]}
               />
             </div>
@@ -241,8 +249,8 @@ export default function DashboardPage() {
               <TrendChart
                 data={trend}
                 series={[
-                  { dataKey: "選手_体調", name: "選手の平均", color: "#0284c7" },
-                  { dataKey: "指導者_体調", name: "指導者の見方", color: "#7c3aed", dashed: true },
+                  { dataKey: "選手_体調", name: "選手の平均", color: "#0066ff" },
+                  { dataKey: "指導者_体調", name: "指導者の見方", color: "#ff8c42", dashed: true },
                 ]}
               />
             </div>
@@ -251,8 +259,8 @@ export default function DashboardPage() {
               <TrendChart
                 data={trend}
                 series={[
-                  { dataKey: "選手_戦術理解", name: "選手の平均", color: "#0284c7" },
-                  { dataKey: "指導者_戦術理解", name: "指導者の見方", color: "#7c3aed", dashed: true },
+                  { dataKey: "選手_戦術理解", name: "選手の平均", color: "#0066ff" },
+                  { dataKey: "指導者_戦術理解", name: "指導者の見方", color: "#ff8c42", dashed: true },
                 ]}
               />
             </div>
@@ -260,7 +268,7 @@ export default function DashboardPage() {
               <p className="mb-1 text-xs font-bold text-slate-600">回答人数</p>
               <TrendChart
                 data={trend}
-                series={[{ dataKey: "回答人数", name: "回答人数", color: "#0d9488" }]}
+                series={[{ dataKey: "回答人数", name: "回答人数", color: "#10b981" }]}
                 height={140}
                 domain={[0, Math.max(totalPlayers, 1)]}
               />
